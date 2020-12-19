@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import store from '../store'
+import store from '../store';
 import App from './App';
 
 test('App renders', () => {
@@ -9,4 +9,6 @@ test('App renders', () => {
       <App />
     </Provider>
   );
+  const linkElement = screen.getByText(/Movie Search/i);
+  expect(linkElement).toBeInTheDocument();
 });

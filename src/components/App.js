@@ -25,7 +25,7 @@ const SearchLabel = styled.label`
 
 const MovieResults = styled.div`
   padding-top:9em;
-  margin: 0 auto;
+  margin: 10px auto;
   color:#fff;
   background-color: rgba(159, 183, 185, 0.6);
   display:flex;
