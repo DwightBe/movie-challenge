@@ -1,5 +1,5 @@
 import React from "react";
-import {Card, Image} from 'semantic-ui-react';
+import {Card, Image, Icon} from 'semantic-ui-react';
 
 
 const Movie = ({ movie }) => {
@@ -15,6 +15,12 @@ const Movie = ({ movie }) => {
                 <Card.Description>
                     {`${movie.overview.substring(0,200)}...`}
                 </Card.Description>
+                <Card.Content extra>
+                    <a>
+                        <Icon name='star' />
+                         {movie.vote_average} stars
+                    </a>
+                    </Card.Content>
             </Card.Content>
         </Card>
   );
