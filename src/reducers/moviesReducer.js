@@ -8,7 +8,6 @@ import {
   const initialState = {
     movies: [],
     submittedQuery: "",
-    isError: false,
     isLoading: false,
   };
   
@@ -17,14 +16,12 @@ import {
       case GET_MOVIES:
         return {
           ...state,
-          isError: false,
           isLoading: true,
         };
   
       case GET_MOVIES_FAILURE:
         return {
           ...state,
-          isError: true,
           isLoading: false,
         };
   
@@ -32,14 +29,13 @@ import {
         return {
           ...state,
           movies: action.payload,
-          isError: false,
           isLoading: false,
         };
   
       case SUBMIT_SEARCH:
         return {
           ...state,
-          query: action.payload,
+          submittedQuery: action.payload,
         };
   
       default:

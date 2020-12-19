@@ -1,22 +1,40 @@
 import './App.css';
 import { connect } from "react-redux";
-import Search from "./Search";
 import Movie from "./Movie";
+import Search from "./Search";
+import styled from 'styled-components';
 
-const App = ({movies}) => {
+const Logo = styled.img`
+    margin-top:12px;
+    height: 1.5em;
+    filter: invert(0%) hue-rotate(180deg) ;
+  `;
+const SearchLabel = styled.label`
+    display: inline-block;
+    height: 2em;
+    vertical-align: middle;
+    margin: 0 8px;
+  }`;
+
+
+const App = ({movies, isLoading}) => {
 
   return (
     <div className="App">
-      <header className="App-header">
+
+      <header>
+        <Logo src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"/>
+         <SearchLabel>Movie Search</SearchLabel>
         <Search />
-        <div className="movies">
-            {
+      </header>
+      <div className="movies">
+            { isLoading && <div>Loading...</div> }
+            { movies.length > 0 ?
               movies.map((movie, index) => (
                 <Movie key={`${index}-${movie.title}`} movie={movie} />
-              ))
+              )):<div></div>
             }
-          </div>
-      </header>
+      </div>
     </div>
 
   );
@@ -25,7 +43,8 @@ const App = ({movies}) => {
 
 const mapStateToProps = (state) => {
   return {
-   movies: state.movies.movies,
+    movies: state.movies.movies,
+    isLoading:state.movies.isLoading
   };
 };
 
