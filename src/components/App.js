@@ -1,7 +1,9 @@
 import './App.css';
+import {useState, useEffect} from "react";
 import { connect } from "react-redux";
 import Movie from "./Movie";
 import Search from "./Search";
+import {Button} from 'semantic-ui-react';
 import styled from 'styled-components';
 
 
@@ -10,12 +12,17 @@ const Logo = styled.img`
     height: 2em;
     filter: invert(0%) hue-rotate(180deg) ;
   `;
+
 const SearchLabel = styled.label`
     display: inline-block;
     height: 3.8em;
     vertical-align: middle;
     margin: 0 14px;
+    @media (max-width: 640px) {
+        height: 3em;
+    }
   }`;
+
 const MovieResults = styled.div`
   padding-top:9em;
   margin: 0 auto;
@@ -30,8 +37,25 @@ const MovieResults = styled.div`
   }
 `;
 
+const LoadMoreButton = styled.div`
+  @media (min-width: 768px) {
+    width: 100%;
+  }
+`;
+
 const App = ({movies, isLoading}) => {
-  console.log(movies);
+  const [parsedMovies, setParsedMovies] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+
+  useEffect(() => {
+    setParsedMovies(movies.slice(0, 5))
+  },[movies]);
+
+  const nextResults = () =>{
+    setParsedMovies(movies.slice(0, (pageCount+1)*5 + 5));
+    setPageCount(pageCount+1);
+  }
+
   return (
     <div className="App">
       <header>
@@ -40,13 +64,19 @@ const App = ({movies, isLoading}) => {
         <Search />
       </header>
         { isLoading && <div>Loading...</div> }
-        { movies.length > 0 &&
+        { parsedMovies.length > 0 &&
           <MovieResults>
-            {movies.map((movie, index) => (
+            {parsedMovies.map((movie, index) => (
               <Movie key={`${index}-${movie.title}`} movie={movie} />
             ))}
-          </MovieResults>
+            {movies.length/((pageCount+1)*5) > 1 ?
+              (<LoadMoreButton>
+                <Button size='mini' onClick={nextResults} style={{margin:'20px auto', height: '40px', width:'100px'}}>Load More ... </Button> 
+              </LoadMoreButton>) :'' 
+            }
+            </MovieResults>
         }
+        
     </div>
 
   );

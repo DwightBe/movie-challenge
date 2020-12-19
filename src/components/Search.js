@@ -20,13 +20,13 @@ const InputContainer = styled.div`
 `;
 
 
-const Search = ({fetchMovies}) => {
-    const [query, setQuery] = useState("");
-    useEffect(() => {
-        if(query !== ''){
-            fetchMovies(query);
-        }
-    }, [query]);
+const Search = ({ fetchMovies }) => {
+  const [query, setQuery] = useState("");
+  useEffect(() => {
+      if(query !== ''){
+          fetchMovies(query);
+      }
+  }, [query]);
   
   return ( 
     <InputContainer>
