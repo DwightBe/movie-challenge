@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { fetchMovies } from "../actions";
+import { connect } from "react-redux";
 
-
-const Search = () => {
-  const [query, setQuery] = useState("");
-
-  useEffect(() => {
-
-  }, [query]);
+const Search = ({fetchMovies}) => {
+    const [query, setQuery] = useState("");
+    useEffect(() => {
+        if(query !== ''){
+            fetchMovies(query);
+        }
+    }, [query]);
   
-  const url = `/search/movie?api_key=${TMDB_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false&840`;
-
   return (
     <div>   
       <input
@@ -19,5 +19,5 @@ const Search = () => {
     </div>
   );
 };
-  
-export default Search;
+
+export default connect(null, { fetchMovies })(Search);
