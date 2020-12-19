@@ -1,4 +1,3 @@
-
 import './App.css';
 import { connect } from "react-redux";
 import Movie from "./Movie";
@@ -19,10 +18,16 @@ const SearchLabel = styled.label`
   }`;
 const MovieResults = styled.div`
   padding-top:9em;
-  width: 90%;
   margin: 0 auto;
   color:#fff;
   background-color: rgba(159, 183, 185, 0.6);
+  display:flex;
+  flex-direction: column;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 0 0 33.333333%;
+  }
 `;
 
 const App = ({movies, isLoading}) => {

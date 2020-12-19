@@ -9,7 +9,12 @@ const Movie = ({ movie }) => {
             <Image src={getImage(movie.poster_path)} wrapped ui={false}/>
              <Card.Content>
                 <Card.Header>{movie.title}</Card.Header>
-                <p>{movie.release_date ? movie.release_date.split('-')[0]: ''}</p>
+                <Card.Meta>
+                    <span>{movie.release_date ? movie.release_date.split('-')[0]: ''}</span>
+                </Card.Meta>
+                <Card.Description>
+                    {`${movie.overview.substring(0,200)}...`}
+                </Card.Description>
             </Card.Content>
         </Card>
   );
