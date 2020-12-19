@@ -7,15 +7,15 @@ import styled from 'styled-components';
 
 
 const Logo = styled.img`
-    margin-top:12px;
-    height: 1.5em;
+    margin-bottom: 4px; 
+    height: 2em;
     filter: invert(0%) hue-rotate(180deg) ;
   `;
 const SearchLabel = styled.label`
     display: inline-block;
-    height: 2.6em;
+    height: 3.8em;
     vertical-align: middle;
-    margin: 0 8px;
+    margin: 0 14px;
   }`;
 const MovieResults = styled.div`
   padding-top:9em;
@@ -34,14 +34,14 @@ const App = ({movies, isLoading}) => {
          <SearchLabel>Movie Search</SearchLabel>
         <Search />
       </header>
-      <MovieResults>
-            { isLoading && <div>Loading...</div> }
-            { movies.length > 0 &&
-              movies.map((movie, index) => (
-                <Movie key={`${index}-${movie.title}`} movie={movie} />
-              ))
-            }
-      </MovieResults>
+        { isLoading && <div>Loading...</div> }
+        { movies.length > 0 &&
+          <MovieResults>
+            {movies.map((movie, index) => (
+              <Movie key={`${index}-${movie.title}`} movie={movie} />
+            ))}
+          </MovieResults>
+        }
     </div>
 
   );

@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { fetchMovies } from "../actions";
 import { connect } from "react-redux";
+import {Input} from 'semantic-ui-react';
 import styled from 'styled-components';
 
-const Input = styled.input`
-    font-size: 14px;
+const InputContainer = styled.div`
     line-height: 18px;
     display: inline-block;
     min-width: 200px;
     width: 30%;
     vertical-align: middle;
-    color: #2f3846;
-    margin: 0px 10px 15px 40px;
-    padding: 5px 10px;
+    margin: 6px 0px 0px 0px;
     @media (max-width: 640px) {
       flex-direction: column;
       display:flex;
@@ -20,6 +18,7 @@ const Input = styled.input`
       width: 60%;
     }
 `;
+
 
 const Search = ({fetchMovies}) => {
     const [query, setQuery] = useState("");
@@ -30,14 +29,17 @@ const Search = ({fetchMovies}) => {
     }, [query]);
   
   return ( 
+    <InputContainer>
       <Input
-        type="text"
-        placeholder="Search"
+        size='mini'
+        icon='search'  
+        placeholder="Search ..."
         name="search"
-        autoComplete="off"
         value={query}
+        style={{marginBottom:'40px'}}
         onChange={(event) => setQuery(event.target.value)}
       />
+    </InputContainer>
   );
 };
 
