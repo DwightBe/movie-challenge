@@ -1,13 +1,12 @@
 import { render, screen } from '@testing-library/react';
-import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { Provider } from 'react-redux';
+import store from '../store'
 import App from './App';
-import reducers from "../reducers";
 
-const store = createStore(reducers);
-
-test('renders movie search', () => {
-  render(<Provider store={store}><App /></Provider>);
-  const linkElement = screen.getByText(/Movie Search/i);
-  expect(linkElement).toBeInTheDocument();
+test('App renders', () => {
+  const { getByText } = render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
 });
