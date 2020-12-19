@@ -6,9 +6,9 @@ npm start
 
 Challenges:
 
-Finding a simple yet sleek design, I used styled components for custom styling and semantic ui for cards and inputs.
+● Finding a simple yet sleek design, I used styled components for custom styling and semantic ui for cards and inputs.
 
-●Paginating and breaking data set up - I created a load more button and a hidden paginator stored in state to calculate the next result set. I would need to implement an api request to get data sets longer than 20 and make a call after 20 are shown.
+● Paginating and breaking data set up - I created a load more button and a hidden paginator stored in state to calculate the next result set. I would need to implement an api request to get data sets longer than 20 and make a call after 20 are shown.
 
 ● Future design - I would display more info, size the cards better, implement simple animations and transitions, have loading and error states and icons, write more tests, grab more data from the server after 20 results.
 
