@@ -11,7 +11,7 @@ const Input = styled.input`
     width: 30%;
     vertical-align: middle;
     color: #2f3846;
-    margin: 0px 10px 12px 10px;
+    margin: 0px 10px 15px 40px;
     padding: 5px 10px;
     @media (max-width: 640px) {
       flex-direction: column;

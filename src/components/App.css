@@ -36,22 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-header {
-  height: 3em;
-  padding: 5px;
-  background-color: #46b1c9;
-  color: #fff;
-}
-
-@media only all and (max-width: 640px) {
-  header {
-    height: 6em;
-  }
-}
-
-@media only all and (max-width: 300px) {
-  header {
-    height: 7em;
-  }
-}

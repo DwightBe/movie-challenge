@@ -1,16 +1,44 @@
+@import "semantic-ui-css/semantic.min.css";
+
 body {
   margin: 0;
   background-color: #f2e2d2;
   background: url("https://live.staticflickr.com/7199/6858584861_ed1300ccef_b.jpg");
   background-size: 1366px 768px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Andika New Basic", sans-serif;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+h2 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  padding: 10px;
+  height: 4.5em;
+  width: 100%;
+  background-color: #46b1c9;
+  color: #fff;
+  z-index: 5;
+}
+
+@media only all and (max-width: 640px) {
+  header {
+    height: 8em;
+  }
+}
+
+@media only all and (max-width: 300px) {
+  header {
+    height: 9em;
+  }
 }

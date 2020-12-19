@@ -1,19 +1,17 @@
 import React from "react";
+import {Card, Image} from 'semantic-ui-react';
+
 
 const Movie = ({ movie }) => {
     const getImage = (path) => `https://image.tmdb.org/t/p/w300/${path}`;
     return (
-        <div className="movie">
-            <h2>{movie.title}</h2>
-            <div>
-                <img
-                width="200"
-                alt={`${movie.title}`}
-                src={getImage(movie.poster_path)}
-                />
-            </div>
-            <p>{movie.release_date ? movie.release_date.split('-')[0]: ''}</p>
-        </div>
+        <Card centered>
+            <Image src={getImage(movie.poster_path)} wrapped ui={false}/>
+             <Card.Content>
+                <Card.Header>{movie.title}</Card.Header>
+                <p>{movie.release_date ? movie.release_date.split('-')[0]: ''}</p>
+            </Card.Content>
+        </Card>
   );
 };
 
